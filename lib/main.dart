@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import './screens/splash_screen.dart';
 import './screens/products_overview_screen.dart';
@@ -15,7 +16,8 @@ import './providers/cart.dart';
 import './providers/auth.dart';
 import './helpers/custom_route.dart';
 
-void main() {
+Future main() async {
+  await DotEnv().load('.env');
   runApp(MyApp());
 }
 

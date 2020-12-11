@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../models/http_exception.dart';
 
@@ -36,7 +37,7 @@ class Auth with ChangeNotifier {
     String urlSegment,
   ) async {
     final url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyAscXlSv0cHJPilMerdwbFHDv4M6cpk69g';
+        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=${DotEnv().env["FIREBASE_KEY"]}';
     try {
       final response = await http.post(
         url,
